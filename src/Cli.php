@@ -11,4 +11,3 @@ function run(): void
     $name = prompt('May i have your name?');
     line("Hello, {$name}");
 }
-
