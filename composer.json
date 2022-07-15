@@ -8,8 +8,13 @@
     "authors": [
         {
             "name": "Taurinz",
-            "email": ""
+            "email": "fsdfsdf@dsd.gma"
         }
     ],
-    "require": {}
+    "description": "hexlet",
+    "require": {},
+    "license": "MIT",
+    "bin": [
+        "bin/brain-games"
+    ]
 }
