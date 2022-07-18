@@ -8,6 +8,6 @@ use function cli\prompt;
 function run(): void
 {
     line('Welcome to the Brain Games!');
-    $name = prompt('May i have your name?');
+    $name = prompt('May i have your name? ', false, '');
     line("Hello, {$name}");
 }
