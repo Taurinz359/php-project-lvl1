@@ -3,7 +3,9 @@
     "autoload": {
         "files": [
             "src/Cli.php",
-            "src/Game.php"
+            "src/Games/Game.php",
+            "src/Games/Calc.php",
+            "src/Engine.php"
         ],
         "psr-4": {
             "Hexlet\\Code\\": "src/"
@@ -23,6 +25,7 @@
     "license": "MIT",
     "bin": [
         "bin/brain-games",
-        "bin/brain-even"
+        "bin/brain-even",
+        "bin/brain-calc"
     ]
 }
