@@ -5,6 +5,7 @@
             "src/Cli.php",
             "src/Games/Game.php",
             "src/Games/Calc.php",
+            "src/Games/Gcd.php",
             "src/Engine.php"
         ],
         "psr-4": {
@@ -26,6 +27,7 @@
     "bin": [
         "bin/brain-games",
         "bin/brain-even",
-        "bin/brain-calc"
+        "bin/brain-calc",
+        "bin/brain-gcd"
     ]
 }

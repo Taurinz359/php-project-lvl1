@@ -11,12 +11,14 @@ function run(string $game)
 
     question($game);
 
-    for ($attempt = 0; $attempt < 3; $attempt++) {
-        $answer = match ($game) {
-            'even' => even($name),
-            'calc' => calc($name)
-        };
+    $game = match ($game) {
+        'even' => fn() => even($name),
+        'calc' => fn() => calc($name),
+        'gcd' => fn() => gcd($name)
+    };
 
+    for ($attempt = 0; $attempt < 3; $attempt++) {
+        $answer = $game();
         if ($answer) {
             line('Correct');
         } elseif (!$answer) {
@@ -44,6 +46,9 @@ function question(string $game): void
         case 'calc':
             line('What is the result of the expression ?');
             break;
+        case 'gcd':
+            line('Find the greatest common divisor of given numbers.');
+            break;
     }
 }
 
@@ -60,7 +65,8 @@ function even($name): bool
         return true;
     }
 
-    line("$answer is wrong answer ;(. Correct answer was '$correctAnswer' Let's try again, $name!");
+    wrongAnswer($answer, $correctAnswer, $name);
+
     return false;
 }
 
@@ -68,13 +74,12 @@ function calc($name): bool
 {
     $operators = ['+', '-', '*'];
 
-    $firstNum = rand(1, 10);
-    $secondNum = rand(1, 10);
+    [$firstNum, $secondNum] = getTwoRandNum();
     $operation = $operators[rand(0, 2)];
 
     line("Question: $firstNum $operation $secondNum");
 
-    $answer = strtolower(prompt('Your answer: ', false, ''));
+    $answer = prompt('Your answer: ', false, '');
 
     $correctAnswer = match ($operation) {
         '+' => $firstNum + $secondNum,
@@ -86,6 +91,31 @@ function calc($name): bool
         return true;
     }
 
+    wrongAnswer($answer, $correctAnswer, $name);
+    return false;
+}
+
+function getTwoRandNum(): array
+{
+    return [rand(1, 10), rand(1, 10)];
+}
+
+function wrongAnswer(string $answer, string $correctAnswer, string $name): void
+{
     line("$answer is wrong answer ;(. Correct answer was '$correctAnswer' Let's try again, $name!");
+}
+
+function gcd(string $name): bool
+{
+    [$firstNum, $secondNum] = getTwoRandNum();
+    line("Question: $firstNum $secondNum");
+    $answer = prompt('Your answer: ', false, '');
+    $correctAnswer = gmp_gcd($firstNum, $secondNum);
+
+    if ($answer == $correctAnswer) {
+        return true;
+    }
+
+    wrongAnswer($answer, $correctAnswer, $name);
     return false;
 }
