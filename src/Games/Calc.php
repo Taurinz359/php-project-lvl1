@@ -6,8 +6,10 @@ use function BrainGames\Engine\wrongAnswer;
 use function cli\line;
 use function cli\prompt;
 
-function calc($name, $firstNum, $secondNum): bool
+function calc($name): bool
 {
+    $firstNum = rand(1, 10);
+    $secondNum = rand(1, 10);
     $operators = ['+', '-', '*'];
 
     $operation = $operators[rand(0, 2)];

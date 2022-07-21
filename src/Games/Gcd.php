@@ -6,8 +6,10 @@ use function BrainGames\Engine\wrongAnswer;
 use function cli\line;
 use function cli\prompt;
 
-function gcd(string $name, int $firstNum, int $secondNum): bool
+function gcd(string $name): bool
 {
+    $firstNum = rand(1, 10);
+    $secondNum = rand(1, 10);
     line("Question: $firstNum $secondNum");
     $answer = prompt('Your answer: ', false, '');
     $correctAnswer = gmp_gcd($firstNum, $secondNum);

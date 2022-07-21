@@ -4,6 +4,7 @@ namespace BrainGames\Engine;
 
 use function BrainGames\Games\Calc\calc;
 use function BrainGames\Games\Gcd\gcd;
+use function BrainGames\Games\Progression\progression;
 use function cli\line;
 use function cli\prompt;
 
@@ -17,26 +18,32 @@ function runGcdGame(): void
     run('gcd');
 }
 
+function runProgressionGame(): void
+{
+    run('progression');
+}
+
 function run(string $game)
 {
     $name = getName();
 
     question($game);
-    $firstNum = rand(1, 10);
-    $secondNum = rand(1, 10);
 
     $game = match ($game) {
-        'calc' => fn() => calc($name, $firstNum, $secondNum),
-        'gcd' => fn() => gcd($name, $firstNum, $secondNum)
+        'calc' => fn() => calc($name),
+        'gcd' => fn() => gcd($name),
+        'progression' => fn() => progression($name)
     };
 
     for ($attempt = 0; $attempt < 3; $attempt++) {
+        $firstNum = rand(1, 100);
+        $secondNum = rand(1, 100);
+
         $answer = $game($name, $firstNum, $secondNum);
-        if ($answer) {
-            line('Correct');
-        } elseif (!$answer) {
+        if (!$answer) {
             return;
         }
+        line('Correct');
     }
 
     line("Congratulations, $name!");
