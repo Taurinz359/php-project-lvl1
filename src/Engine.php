@@ -4,6 +4,7 @@ namespace BrainGames\Engine;
 
 use function BrainGames\Games\Calc\calc;
 use function BrainGames\Games\Gcd\gcd;
+use function BrainGames\Games\Prime\prime;
 use function BrainGames\Games\Progression\progression;
 use function cli\line;
 use function cli\prompt;
@@ -23,6 +24,11 @@ function runProgressionGame(): void
     run('progression');
 }
 
+function runPrimeGame(): void
+{
+    run('prime');
+}
+
 function run(string $game)
 {
     $name = getName();
@@ -32,7 +38,8 @@ function run(string $game)
     $game = match ($game) {
         'calc' => fn() => calc($name),
         'gcd' => fn() => gcd($name),
-        'progression' => fn() => progression($name)
+        'progression' => fn() => progression($name),
+        'prime' => fn() => prime($name)
     };
 
     for ($attempt = 0; $attempt < 3; $attempt++) {
@@ -66,10 +73,16 @@ function question(string $game): void
         case 'gcd':
             line('Find the greatest common divisor of given numbers.');
             break;
+        case 'progression':
+            line('What number is missing in the progression?');
+            break;
+        case 'prime':
+            line("Answer \"yes\" if given number is prime. Otherwise answer \"no\".");
+            break;
     }
 }
 
 function wrongAnswer(string $answer, string $correctAnswer, string $name): void
 {
-    line("$answer is wrong answer ;(. Correct answer was '$correctAnswer' Let's try again, $name!");
+    line("\"$answer\" is wrong answer ;(. Correct answer was '$correctAnswer' Let's try again, $name!");
 }
