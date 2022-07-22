@@ -58,8 +58,8 @@ function run(string $game)
 
 function getName(): string
 {
-    line('Welcome to the Brain Game!');
-    $name = prompt('May I have your name?');
+    line('Welcome to the Brain Games!');
+    $name = prompt('May I have your name?:');
     line("Hello, %s!", $name);
     return $name;
 }
