@@ -12,7 +12,7 @@ function gcd(string $name): bool
     $secondNum = rand(1, 10);
     line("Question: $firstNum $secondNum");
     $answer = prompt('Your answer: ', false, '');
-    $correctAnswer = gmp_gcd($firstNum, $secondNum);
+    $correctAnswer = checkGcd($firstNum, $secondNum);
 
     if ($answer == $correctAnswer) {
         return true;
@@ -20,4 +20,18 @@ function gcd(string $name): bool
 
     wrongAnswer($answer, $correctAnswer, $name);
     return false;
+}
+
+function checkGcd($n, $m)
+{
+    while (true) {
+        if ($n == $m) {
+            return $m;
+        }
+        if ($n > $m) {
+            $n -= $m;
+        } else {
+            $m -= $n;
+        }
+    }
 }
