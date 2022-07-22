@@ -28,6 +28,6 @@ function calc(string $name): bool
         return true;
     }
 
-    wrongAnswer($answer, $correctAnswer, $name);
+    wrongAnswer($answer, (string)$correctAnswer, $name);
     return false;
 }

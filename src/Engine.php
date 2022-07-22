@@ -29,7 +29,7 @@ function runPrimeGame(): void
     run('prime');
 }
 
-function run(string $game)
+function run(string $game): void
 {
     $name = getName();
 
@@ -44,11 +44,7 @@ function run(string $game)
     };
 
     for ($attempt = 0; $attempt < 3; $attempt++) {
-        $firstNum = rand(1, 100);
-        $secondNum = rand(1, 100);
-
-        $answer = $game($name, $firstNum, $secondNum);
-        if (!$answer) {
+        if (!$game($name)) {
             return;
         }
         line('Correct');
