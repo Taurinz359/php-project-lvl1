@@ -6,7 +6,7 @@ use function BrainGames\Engine\wrongAnswer;
 use function cli\line;
 use function cli\prompt;
 
-function calc($name): bool
+function calc(string $name): bool
 {
     $firstNum = rand(1, 10);
     $secondNum = rand(1, 10);
@@ -16,7 +16,7 @@ function calc($name): bool
 
     line("Question: $firstNum $operation $secondNum");
 
-    $answer = prompt('Your answer: ', false, '');
+    $answer = prompt('Your answer: ', 'no', '');
 
     $correctAnswer = match ($operation) {
         '+' => $firstNum + $secondNum,

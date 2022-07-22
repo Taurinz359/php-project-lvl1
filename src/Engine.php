@@ -39,7 +39,8 @@ function run(string $game)
         'calc' => fn() => calc($name),
         'gcd' => fn() => gcd($name),
         'progression' => fn() => progression($name),
-        'prime' => fn() => prime($name)
+        'prime' => fn() => prime($name),
+        default => calc($name)
     };
 
     for ($attempt = 0; $attempt < 3; $attempt++) {
