@@ -55,7 +55,7 @@ function getName(): string
     return $name;
 }
 
-function callGame(string $game, string $name): mixed
+function callGame(string $game, string $name): \Closure|bool
 {
     return match ($game) {
         'calc' => fn() => calc($name),
