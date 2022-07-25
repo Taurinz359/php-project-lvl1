@@ -6,11 +6,11 @@ use function BrainGames\Engine\wrongAnswer;
 use function cli\line;
 use function cli\prompt;
 
-function prime($name): bool
+function prime(string $name): bool
 {
     $randomNum = rand(1, 100);
     line("Question: {$randomNum}");
-    $answer = strtolower(prompt('Your answer: ', false, ''));
+    $answer = strtolower(prompt('Your answer: '));
     $correctAnswer = checkPrime($randomNum) == 1 ? 'yes' : 'no';
 
     if ($answer == $correctAnswer) {
@@ -21,7 +21,7 @@ function prime($name): bool
     return false;
 }
 
-function checkPrime($num)
+function checkPrime(int $num): int
 {
     if ($num == 1) {
         return 0;

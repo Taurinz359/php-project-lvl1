@@ -12,6 +12,7 @@ function progression(string $name): bool
     $stop = rand(0, $maxProgression - 1);
 
     $question = '';
+    $correctAnswer = 0;
 
     for ($i = 0; $i < $maxProgression; $i++) {
         $firstNum += $randPlus;
@@ -24,16 +25,19 @@ function progression(string $name): bool
     }
 
     line("Question: $question");
-    $answer = prompt('Your answer: ', false, '');
+    $answer = prompt('Your answer: ');
 
     if ($answer == $correctAnswer) {
         return true;
     }
 
-    wrongAnswer($answer, $correctAnswer, $name);
+    wrongAnswer($answer, (string)$correctAnswer, $name);
     return false;
 }
 
+/**
+ * @return array<int>
+ */
 function getRandNumsForGame(): array
 {
     return [rand(1, 100), rand(5, 10), rand(1, 10)];

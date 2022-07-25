@@ -35,13 +35,7 @@ function run(string $game): void
 
     question($game);
 
-    $game = match ($game) {
-        'calc' => fn() => calc($name),
-        'gcd' => fn() => gcd($name),
-        'progression' => fn() => progression($name),
-        'prime' => fn() => prime($name),
-        default => calc($name)
-    };
+    $game = callGame($game, $name);
 
     for ($attempt = 0; $attempt < 3; $attempt++) {
         if (!$game($name)) {
@@ -59,6 +53,17 @@ function getName(): string
     $name = prompt('May I have your name?:');
     line("Hello, %s!", $name);
     return $name;
+}
+
+function callGame(string $game, string $name): mixed
+{
+    return match ($game) {
+        'calc' => fn() => calc($name),
+        'gcd' => fn() => gcd($name),
+        'progression' => fn() => progression($name),
+        'prime' => fn() => prime($name),
+        default => calc($name)
+    };
 }
 
 function question(string $game): void

@@ -11,18 +11,18 @@ function gcd(string $name): bool
     $firstNum = rand(1, 10);
     $secondNum = rand(1, 10);
     line("Question: $firstNum $secondNum");
-    $answer = prompt('Your answer: ', false, '');
+    $answer = prompt('Your answer: ');
     $correctAnswer = checkGcd($firstNum, $secondNum);
 
     if ($answer == $correctAnswer) {
         return true;
     }
 
-    wrongAnswer($answer, $correctAnswer, $name);
+    wrongAnswer($answer, (string)$correctAnswer, $name);
     return false;
 }
 
-function checkGcd($n, $m)
+function checkGcd(int $n, int $m): int
 {
     while (true) {
         if ($n == $m) {
