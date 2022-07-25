@@ -35,10 +35,8 @@ function run(string $game): void
 
     question($game);
 
-    $game = callGame($game, $name);
-
     for ($attempt = 0; $attempt < 3; $attempt++) {
-        if (!$game($name)) {
+        if (!callGame($game, $name)) {
             return;
         }
         line('Correct');
@@ -55,13 +53,13 @@ function getName(): string
     return $name;
 }
 
-function callGame(string $game, string $name): \Closure|bool
+function callGame(string $game, string $name): bool
 {
     return match ($game) {
-        'calc' => fn() => calc($name),
-        'gcd' => fn() => gcd($name),
-        'progression' => fn() => progression($name),
-        'prime' => fn() => prime($name),
+        'calc' => calc($name),
+        'gcd' => gcd($name),
+        'progression' => progression($name),
+        'prime' => prime($name),
         default => calc($name)
     };
 }
