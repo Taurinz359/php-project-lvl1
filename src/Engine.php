@@ -56,7 +56,6 @@ function getName(): string
 function callGame(string $game, string $name): bool
 {
     return match ($game) {
-        'calc' => calc($name),
         'gcd' => gcd($name),
         'progression' => progression($name),
         'prime' => prime($name),

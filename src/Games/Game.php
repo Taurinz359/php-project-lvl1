@@ -10,7 +10,7 @@ function run(): void
     line('Welcome to the Brain Games!');
     $name = prompt('May I have your name?:');
     line("Hello, %s!", $name);
-    line("Answer \"yes\" if the number is even, otherwise answer \"no\"");
+    line("Answer \"yes\" if the number is even, otherwise answer \"no\".");
 
     for ($attempt = 0; $attempt < 3; $attempt++) {
         $randNum = rand(1, 10);
