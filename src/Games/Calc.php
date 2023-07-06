@@ -3,11 +3,13 @@
 namespace BrainGames\Games\Calc;
 
 use function BrainGames\Engine\wrongAnswer;
+use function BrainGames\Questions\getName;
 use function cli\line;
 use function cli\prompt;
 
-function calc(string $name): bool
+function calc(): bool
 {
+    $name = getName();
     $firstNum = rand(1, 10);
     $secondNum = rand(1, 10);
     $operators = ['+', '-', '*'];
