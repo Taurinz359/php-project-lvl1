@@ -2,41 +2,36 @@
 
 namespace BrainGames\Engine;
 
-use function BrainGames\Games\Calc\calc;
-use function BrainGames\Games\Gcd\gcd;
-use function BrainGames\Games\Prime\prime;
-use function BrainGames\Games\Progression\progression;
 use function cli\line;
 use function cli\prompt;
 
 function runCalcGame(): void
 {
-    run("calc");
+    run('BrainGames\Games\Calc\calc', 'BrainGames\Games\Calc\showQuestion');
 }
 
 function runGcdGame(): void
 {
-    run('gcd');
+    run('BrainGames\Games\Gcd\gcd', 'BrainGames\Games\Gcd\showQuestion');
 }
 
 function runProgressionGame(): void
 {
-    run('progression');
+    run('BrainGames\Games\Progression\progression', 'BrainGames\Games\Progression\showQuestion');
 }
 
 function runPrimeGame(): void
 {
-    run('prime');
+    run('BrainGames\Games\Prime\prime', 'BrainGames\Games\Prime\showQuestion');
 }
 
-function run(string $game): void
+function run(string $game, string $showQuestion): void
 {
     $name = getName();
-
-    getQuestion($game);
+    $showQuestion();
 
     for ($attempt = 0; $attempt < 3; $attempt++) {
-        if (!callGame($game, $name)) {
+        if (!$game($name)) {
             return;
         }
         line('Correct');
@@ -53,35 +48,7 @@ function getName(): string
     return $name;
 }
 
-function callGame(string $game, string $name): bool
-{
-    return match ($game) {
-        'gcd' => gcd($name),
-        'progression' => progression($name),
-        'prime' => prime($name),
-        default => calc($name)
-    };
-}
-
-function getQuestion(string $game): void
-{
-    switch ($game) {
-        case 'calc':
-            line('What is the result of the expression ?');
-            break;
-        case 'gcd':
-            line('Find the greatest common divisor of given numbers.');
-            break;
-        case 'progression':
-            line('What number is missing in the progression?');
-            break;
-        case 'prime':
-            line("Answer \"yes\" if given number is prime. Otherwise answer \"no\".");
-            break;
-    }
-}
-
-function wrongAnswer(string $answer, string $correctAnswer, string $name): void
+function showLossGameMessage(string $answer, string $correctAnswer, string $name): void
 {
     line("\"$answer\" is wrong answer ;(. Correct answer was '$correctAnswer' Let's try again, $name!");
 }

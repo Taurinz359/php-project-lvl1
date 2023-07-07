@@ -2,7 +2,7 @@
 
 namespace BrainGames\Games\Gcd;
 
-use function BrainGames\Engine\wrongAnswer;
+use function BrainGames\Engine\showLossGameMessage;
 use function cli\line;
 use function cli\prompt;
 
@@ -18,7 +18,7 @@ function gcd(string $name): bool
         return true;
     }
 
-    wrongAnswer($answer, (string)$correctAnswer, $name);
+    showLossGameMessage($answer, (string)$correctAnswer, $name);
     return false;
 }
 
@@ -34,4 +34,9 @@ function checkGcd(int $n, int $m): int
             $m -= $n;
         }
     }
+}
+
+function showQuestion(): void
+{
+    line('Find the greatest common divisor of given numbers.');
 }

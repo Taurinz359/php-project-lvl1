@@ -2,7 +2,7 @@
 
 namespace BrainGames\Games\Calc;
 
-use function BrainGames\Engine\wrongAnswer;
+use function BrainGames\Engine\showLossGameMessage;
 use function cli\line;
 use function cli\prompt;
 
@@ -28,6 +28,11 @@ function calc(string $name): bool
         return true;
     }
 
-    wrongAnswer($answer, (string)$correctAnswer, $name);
+    showLossGameMessage($answer, (string)$correctAnswer, $name);
     return false;
+}
+
+function showQuestion(): void
+{
+    line('What is the result of the expression ?');
 }

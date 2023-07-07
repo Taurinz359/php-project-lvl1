@@ -2,7 +2,7 @@
 
 namespace BrainGames\Games\Progression;
 
-use function BrainGames\Engine\wrongAnswer;
+use function BrainGames\Engine\showLossGameMessage;
 use function cli\line;
 use function cli\prompt;
 
@@ -31,7 +31,7 @@ function progression(string $name): bool
         return true;
     }
 
-    wrongAnswer($answer, (string)$correctAnswer, $name);
+    showLossGameMessage($answer, (string)$correctAnswer, $name);
     return false;
 }
 
@@ -41,4 +41,9 @@ function progression(string $name): bool
 function getRandNumsForGame(): array
 {
     return [rand(1, 100), rand(5, 10), rand(1, 10)];
+}
+
+function showQuestion(): void
+{
+    line('What number is missing in the progression?');
 }

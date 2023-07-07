@@ -2,7 +2,7 @@
 
 namespace BrainGames\Games\Prime;
 
-use function BrainGames\Engine\wrongAnswer;
+use function BrainGames\Engine\showLossGameMessage;
 use function cli\line;
 use function cli\prompt;
 
@@ -17,7 +17,7 @@ function prime(string $name): bool
         return true;
     }
 
-    wrongAnswer($answer, $correctAnswer, $name);
+    showLossGameMessage($answer, $correctAnswer, $name);
     return false;
 }
 
@@ -32,4 +32,9 @@ function checkPrime(int $num): int
         }
     }
     return 1;
+}
+
+function showQuestion(): void
+{
+    line("Answer \"yes\" if given number is prime. Otherwise answer \"no\".");
 }
