@@ -25,8 +25,12 @@ function runPrimeGame(): void
     run('BrainGames\Games\Prime\prime', 'BrainGames\Games\Prime\showQuestion');
 }
 
-function run(string $game, string $showQuestion): void
+function run(string $game = null, string $showQuestion = null): void
 {
+    if ($game === null || $showQuestion === null) {
+        return;
+    }
+
     $name = getName();
     $showQuestion();
 
