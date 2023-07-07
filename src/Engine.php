@@ -33,7 +33,7 @@ function run(string $game): void
 {
     $name = getName();
 
-    question($game);
+    getQuestion($game);
 
     for ($attempt = 0; $attempt < 3; $attempt++) {
         if (!callGame($game, $name)) {
@@ -63,7 +63,7 @@ function callGame(string $game, string $name): bool
     };
 }
 
-function question(string $game): void
+function getQuestion(string $game): void
 {
     switch ($game) {
         case 'calc':
