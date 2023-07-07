@@ -1,8 +1,6 @@
 #! /usr/bin/env php
 <?php
-
-use function BrainGames\Engine\runCalcGame;
-
 require_once __DIR__ . '/../vendor/autoload.php';
-runCalcGame();
+
+\BrainGames\Engine\runCalcGame();
 ?>

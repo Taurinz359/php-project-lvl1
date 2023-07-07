@@ -1,8 +1,5 @@
 #! /usr/bin/env php
 <?php
-
-use function BrainGames\Cli\runWelcomeMessage;
-
 require_once __DIR__ . '/../vendor/autoload.php';
-runWelcomeMessage();
+\BrainGames\Cli\run();
 ?>

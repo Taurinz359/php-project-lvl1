@@ -6,8 +6,8 @@ use function BrainGames\Games\Calc\calc;
 use function BrainGames\Games\Gcd\gcd;
 use function BrainGames\Games\Prime\prime;
 use function BrainGames\Games\Progression\progression;
-use function BrainGames\Questions\writeQuestionCli;
 use function cli\line;
+use function cli\prompt;
 
 function runCalcGame(): void
 {
@@ -31,24 +31,54 @@ function runPrimeGame(): void
 
 function run(string $game): void
 {
-    writeQuestionCli($game);
+    $name = getName();
+
+    question($game);
 
     for ($attempt = 0; $attempt < 3; $attempt++) {
-        if (!callGame($game)) {
+        if (!callGame($game, $name)) {
             return;
         }
         line('Correct');
     }
+
+    line("Congratulations, $name!");
 }
 
-function callGame(string $game): bool
+function getName(): string
+{
+    line('Welcome to the Brain Games!');
+    $name = prompt('May I have your name?:');
+    line("Hello, %s!", $name);
+    return $name;
+}
+
+function callGame(string $game, string $name): bool
 {
     return match ($game) {
-        'gcd' => gcd(),
-        'progression' => progression(),
-        'prime' => prime(),
-        default => calc()
+        'gcd' => gcd($name),
+        'progression' => progression($name),
+        'prime' => prime($name),
+        default => calc($name)
     };
+}
+
+function question(string $game): void
+{
+    switch ($game) {
+        case 'calc':
+            line('What is the result of the expression ?');
+            break;
+        case 'gcd':
+            line('Find the greatest common divisor of given numbers.');
+            break;
+        case 'progression':
+            line('What number is missing in the progression?');
+            break;
+        case 'prime':
+            line("Answer \"yes\" if given number is prime. Otherwise answer \"no\".");
+            break;
+    }
 }
 
 function wrongAnswer(string $answer, string $correctAnswer, string $name): void
