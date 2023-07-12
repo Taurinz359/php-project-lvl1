@@ -28,7 +28,7 @@ function runPrimeGame(): void
 function run(callable $game = null, callable $showQuestion = null): void
 {
     if ($game === null || $showQuestion === null) {
-        return;
+        throw new \Exception('fail to start game');
     }
 
     $name = getName();
