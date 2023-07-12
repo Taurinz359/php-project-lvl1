@@ -31,8 +31,3 @@ function calc(string $name): bool
     showLossGameMessage($answer, (string)$correctAnswer, $name);
     return false;
 }
-
-function showQuestion(): void
-{
-    line('What is the result of the expression ?');
-}

@@ -20,8 +20,3 @@ function brainEven(string $name): bool
     }
     return true;
 }
-
-function showQuestion(): void
-{
-    line("Answer \"yes\" if the number is even, otherwise answer \"no\".");
-}

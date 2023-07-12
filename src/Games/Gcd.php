@@ -35,8 +35,3 @@ function checkGcd(int $n, int $m): int
         }
     }
 }
-
-function showQuestion(): void
-{
-    line('Find the greatest common divisor of given numbers.');
-}

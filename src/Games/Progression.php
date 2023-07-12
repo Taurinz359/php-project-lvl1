@@ -42,8 +42,3 @@ function getRandNumsForGame(): array
 {
     return [rand(1, 100), rand(5, 10), rand(1, 10)];
 }
-
-function showQuestion(): void
-{
-    line('What number is missing in the progression?');
-}

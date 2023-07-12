@@ -33,8 +33,3 @@ function checkPrime(int $num): int
     }
     return 1;
 }
-
-function showQuestion(): void
-{
-    line("Answer \"yes\" if given number is prime. Otherwise answer \"no\".");
-}

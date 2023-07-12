@@ -7,38 +7,47 @@ use function cli\prompt;
 
 function runCalcGame(): void
 {
-    run('BrainGames\Games\Calc\calc', 'BrainGames\Games\Calc\showQuestion');
+    run('BrainGames\Games\Calc\calc', 'What is the result of the expression ?');
 }
 
 function runGcdGame(): void
 {
-    run('BrainGames\Games\Gcd\gcd', 'BrainGames\Games\Gcd\showQuestion');
+    run('BrainGames\Games\Gcd\gcd', 'Find the greatest common divisor of given numbers.');
 }
 
 function runProgressionGame(): void
 {
-    run('BrainGames\Games\Progression\progression', 'BrainGames\Games\Progression\showQuestion');
+    run(
+        'BrainGames\Games\Progression\progression',
+        'What number is missing in the progression?'
+    );
 }
 
 function runPrimeGame(): void
 {
-    run('BrainGames\Games\Prime\prime', 'BrainGames\Games\Prime\showQuestion');
+    run(
+        'BrainGames\Games\Prime\prime',
+        "Answer \"yes\" if given number is prime. Otherwise answer \"no\"."
+    );
 }
 
 function runBrainEven(): void
 {
-    run('BrainGames\Games\Game\brainEven', 'BrainGames\Games\Game\showQuestion');
+    run(
+        'BrainGames\Games\Game\brainEven',
+        "Answer \"yes\" if the number is even, otherwise answer \"no\"."
+    );
 }
 
 
-function run(callable $launchGameWithCheck = null, callable $showQuestion = null): void
+function run(callable $launchGameWithCheck = null, string $question = null): void
 {
-    if ($launchGameWithCheck === null || $showQuestion === null) {
+    if ($launchGameWithCheck === null || $question === null) {
         throw new \Exception('fail to start game');
     }
 
     $name = getName();
-    $showQuestion();
+    line($question);
 
     for ($attempt = 0; $attempt < 3; $attempt++) {
         if (!$launchGameWithCheck($name)) {
