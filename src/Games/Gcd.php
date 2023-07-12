@@ -8,7 +8,7 @@ use function cli\prompt;
 /**
  * @return true|array<string,string|int>
  */
-function gcd(): true|array
+function gcd(): true | array
 {
     $firstNum = rand(1, 10);
     $secondNum = rand(1, 10);

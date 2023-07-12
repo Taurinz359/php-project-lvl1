@@ -9,7 +9,7 @@ use function cli\prompt;
  * @return true|array<string,string|int>
  */
 
-function calc(): true|array
+function calc(): true | array
 {
     $firstNum = rand(1, 10);
     $secondNum = rand(1, 10);

@@ -9,7 +9,7 @@ use function cli\prompt;
  * @return true|array<string,string>
  */
 
-function brainEven(): true|array
+function brainEven(): true | array
 {
     $randNum = rand(1, 10);
     line("Question: " . $randNum);

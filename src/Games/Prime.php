@@ -9,7 +9,7 @@ use function cli\prompt;
  * @return true|array<string,string>
  */
 
-function prime(): true|array
+function prime(): true | array
 {
     $randomNum = rand(1, 100);
     line("Question: {$randomNum}");
