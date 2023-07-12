@@ -9,7 +9,7 @@ use function cli\prompt;
  * @return true|array<string,string|int>
  */
 
-function progression(): true | array
+function progression(): bool|array
 {
     [$firstNum, $maxProgression, $randPlus] = getRandNumsForGame();
     $stop = rand(0, $maxProgression - 1);
