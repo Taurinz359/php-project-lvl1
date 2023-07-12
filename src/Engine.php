@@ -25,6 +25,12 @@ function runPrimeGame(): void
     run('BrainGames\Games\Prime\prime', 'BrainGames\Games\Prime\showQuestion');
 }
 
+function runBrainEven(): void
+{
+    run('BrainGames\Games\Game\brainEven', 'BrainGames\Games\Game\showQuestion');
+}
+
+
 function run(callable $game = null, callable $showQuestion = null): void
 {
     if ($game === null || $showQuestion === null) {
