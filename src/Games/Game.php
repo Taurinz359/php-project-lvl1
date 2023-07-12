@@ -15,7 +15,7 @@ function brainEven(string $name): bool
     $correctAnswer = $randNum % 2 === 0 ? 'yes' : 'no';
 
     if ($answer != $correctAnswer) {
-        showLossGameMessage($answer, (string)$correctAnswer, $name);
+        showLossGameMessage($answer, $correctAnswer, $name);
         return false;
     }
     return true;
