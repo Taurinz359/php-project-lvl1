@@ -31,9 +31,9 @@ function runBrainEven(): void
 }
 
 
-function run(callable $game = null, callable $showQuestion = null): void
+function run(callable $launchGameWithCheck = null, callable $showQuestion = null): void
 {
-    if ($game === null || $showQuestion === null) {
+    if ($launchGameWithCheck === null || $showQuestion === null) {
         throw new \Exception('fail to start game');
     }
 
@@ -41,7 +41,7 @@ function run(callable $game = null, callable $showQuestion = null): void
     $showQuestion();
 
     for ($attempt = 0; $attempt < 3; $attempt++) {
-        if (!$game($name)) {
+        if (!$launchGameWithCheck($name)) {
             return;
         }
         line('Correct');
