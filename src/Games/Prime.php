@@ -2,11 +2,14 @@
 
 namespace BrainGames\Games\Prime;
 
-use function BrainGames\Engine\showLossGameMessage;
 use function cli\line;
 use function cli\prompt;
 
-function prime(string $name): bool
+/**
+ * @return true|array<string,string>
+ */
+
+function prime(): true|array
 {
     $randomNum = rand(1, 100);
     line("Question: {$randomNum}");
@@ -17,8 +20,7 @@ function prime(string $name): bool
         return true;
     }
 
-    showLossGameMessage($answer, $correctAnswer, $name);
-    return false;
+    return ['answer' => $answer, 'correctAnswer' => $correctAnswer];
 }
 
 function checkPrime(int $num): int

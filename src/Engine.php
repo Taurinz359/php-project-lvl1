@@ -39,7 +39,6 @@ function runBrainEven(): void
     );
 }
 
-
 function run(callable $launchGameWithCheck = null, string $question = null): void
 {
     if ($launchGameWithCheck === null || $question === null) {
@@ -50,7 +49,10 @@ function run(callable $launchGameWithCheck = null, string $question = null): voi
     line($question);
 
     for ($attempt = 0; $attempt < 3; $attempt++) {
-        if (!$launchGameWithCheck($name)) {
+        $result = $launchGameWithCheck();
+
+        if (is_array($result)) {
+            showLossGameMessage($result['answer'], $result['correctAnswer'], $name);
             return;
         }
         line('Correct');

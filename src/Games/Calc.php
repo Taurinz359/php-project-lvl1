@@ -2,11 +2,14 @@
 
 namespace BrainGames\Games\Calc;
 
-use function BrainGames\Engine\showLossGameMessage;
 use function cli\line;
 use function cli\prompt;
 
-function calc(string $name): bool
+/**
+ * @return true|array<string,string|int>
+ */
+
+function calc(): true|array
 {
     $firstNum = rand(1, 10);
     $secondNum = rand(1, 10);
@@ -28,6 +31,5 @@ function calc(string $name): bool
         return true;
     }
 
-    showLossGameMessage($answer, (string)$correctAnswer, $name);
-    return false;
+    return ['answer' => $answer, 'correctAnswer' => $correctAnswer];
 }

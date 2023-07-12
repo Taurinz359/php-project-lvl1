@@ -2,11 +2,13 @@
 
 namespace BrainGames\Games\Gcd;
 
-use function BrainGames\Engine\showLossGameMessage;
 use function cli\line;
 use function cli\prompt;
 
-function gcd(string $name): bool
+/**
+ * @return true|array<string,string|int>
+ */
+function gcd(): true|array
 {
     $firstNum = rand(1, 10);
     $secondNum = rand(1, 10);
@@ -18,8 +20,7 @@ function gcd(string $name): bool
         return true;
     }
 
-    showLossGameMessage($answer, (string)$correctAnswer, $name);
-    return false;
+    return ['answer' => $answer, 'correctAnswer' => $correctAnswer];
 }
 
 function checkGcd(int $n, int $m): int
