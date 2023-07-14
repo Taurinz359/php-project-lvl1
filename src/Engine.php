@@ -64,7 +64,7 @@ function run(callable $launchGameWithCheck = null, string $question = null): voi
 function getName(): string
 {
     line('Welcome to the Brain Games!');
-    $name = prompt('May I have your name?:');
+    $name = prompt('May I have your name?', marker: '');
     line("Hello, %s!", $name);
     return $name;
 }
