@@ -52,13 +52,12 @@ function run(callable $launchGameWithCheck = null, string $question = null): voi
     for ($attempt = 0; $attempt < $attemptsCount; $attempt++) {
         $result = $launchGameWithCheck();
 
-        if (is_array($result)) {
+        if ($result['isCorrect'] === false) {
             showLossGameMessage($result['answer'], $result['correctAnswer'], $name);
             return;
         }
         line('Correct');
     }
-
     line("Congratulations, $name!");
 }
 

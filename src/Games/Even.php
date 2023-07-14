@@ -6,10 +6,9 @@ use function cli\line;
 use function cli\prompt;
 
 /**
- * @return true|array<string,string>
+ * @return array{'answer': string, "correctAnswer": string|int, "isCorrect": bool}
  */
-
-function brainEven(): bool|array
+function brainEven(): array
 {
     $randNum = rand(1, 10);
     line("Question: " . $randNum);
@@ -17,8 +16,9 @@ function brainEven(): bool|array
     $answer = strtolower(prompt('Your answer:'));
     $correctAnswer = $randNum % 2 === 0 ? 'yes' : 'no';
 
-    if ($answer === $correctAnswer) {
-        return true;
-    }
-    return ['answer' => $answer, 'correctAnswer' => $correctAnswer];
+    return [
+        'answer' => $answer,
+        'correctAnswer' => $correctAnswer,
+        'isCorrect' => $answer == $correctAnswer,
+    ];
 }

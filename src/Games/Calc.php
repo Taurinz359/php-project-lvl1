@@ -6,9 +6,9 @@ use function cli\line;
 use function cli\prompt;
 
 /**
- * @return true|array<string,string|int>
+ * @return array{'answer': string, "correctAnswer": string|int, "isCorrect": bool}
  */
-function calc(): bool | array
+function calc(): array
 {
     $firstNum = rand(1, 10);
     $secondNum = rand(1, 10);
@@ -26,9 +26,9 @@ function calc(): bool | array
         '*' => $firstNum * $secondNum
     };
 
-    if ($answer == $correctAnswer) {
-        return true;
-    }
-
-    return ['answer' => $answer, 'correctAnswer' => $correctAnswer];
+    return [
+        'answer' => $answer,
+        'correctAnswer' => $correctAnswer,
+        'isCorrect' => $answer == $correctAnswer
+    ];
 }

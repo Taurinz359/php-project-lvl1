@@ -6,21 +6,20 @@ use function cli\line;
 use function cli\prompt;
 
 /**
- * @return true|array<string,string>
+ * @return array{'answer': string, "correctAnswer": string|int, "isCorrect": bool}
  */
-
-function prime(): bool|array
+function prime(): array
 {
     $randomNum = rand(1, 100);
     line("Question: {$randomNum}");
     $answer = strtolower(prompt('Your answer: '));
     $correctAnswer = checkPrime($randomNum) == 1 ? 'yes' : 'no';
 
-    if ($answer == $correctAnswer) {
-        return true;
-    }
-
-    return ['answer' => $answer, 'correctAnswer' => $correctAnswer];
+    return [
+        'answer' => $answer,
+        'correctAnswer' => $correctAnswer,
+        'isCorrect' => $answer == $correctAnswer
+    ];
 }
 
 function checkPrime(int $num): int
