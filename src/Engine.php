@@ -47,8 +47,9 @@ function run(callable $launchGameWithCheck = null, string $question = null): voi
 
     $name = getName();
     line($question);
+    $attemptsCount = 3;
 
-    for ($attempt = 0; $attempt < 3; $attempt++) {
+    for ($attempt = 0; $attempt < $attemptsCount; $attempt++) {
         $result = $launchGameWithCheck();
 
         if (is_array($result)) {
